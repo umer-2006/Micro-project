@@ -1,0 +1,48 @@
+#include <reg51.h>
+
+// Define PWM pin
+sbit PWM_PIN = P1^0;  // Using P1.0 as PWM output
+
+void init_timer0(void) {
+    // Timer 0 in Mode 1 (16-bit timer mode)
+    TMOD = 0x01;  
+    
+    // Initial timer values for 75% duty cycle
+    TH0 = 0x3C;   // High byte of timer 
+    TL0 = 0xB0;   // Low byte of timer
+    
+    // Enable Timer 0 interrupt
+    EA = 1;       // Global interrupt enable
+    ET0 = 1;      // Timer 0 interrupt enable
+}
+
+void timer0_isr(void) __interrupt(1) {
+    // Toggle PWM pin
+    PWM_PIN = !PWM_PIN;
+    
+    // Reload timer values
+    if(PWM_PIN) {
+        // On state (25% of cycle)
+        TH0 = 0x3C;
+        TL0 = 0xB0;
+    }
+    else {
+        // Off state (75% of cycle)
+        TH0 = 0xB4;
+        TL0 = 0x30;
+    }
+    
+    // Start timer
+    TR0 = 1;
+}
+
+void main(void) {
+    // Initialize PWM
+    PWM_PIN = 0;  // Start with low state
+    init_timer0();
+    
+    // Infinite loop
+    while(1) {
+        // Main program can do other tasks
+    }
+}
