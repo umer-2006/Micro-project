@@ -1,0 +1,221 @@
+#include <Servo.h>
+
+Servo myservo1;
+Servo myservo2;
+Servo myservo3;
+
+int pos1 = 80;
+int pos2 = 80;
+int pos3 = 80;
+
+// Define sensor pins
+const int sensorAPin = 4; // IR sensor A connected to pin 4
+const int sensorBPin = 5; // IR sensor B connected to pin 5
+
+// Variables to store sensor states
+bool sensorAState = HIGH;
+bool sensorBState = HIGH;
+
+void setup() {
+  pinMode(sensorAPin, INPUT);
+  pinMode(sensorBPin, INPUT);
+
+  myservo1.attach(9);
+  myservo2.attach(10);
+  myservo3.attach(3);
+}
+
+void loop() {
+  // Read sensor states directly (debouncing removed)
+  sensorAState = digitalRead(sensorAPin);
+  sensorBState = digitalRead(sensorBPin);
+
+  if (sensorAState == LOW && sensorBState == HIGH) {
+    // Original code for Sensor A LOW and Sensor B HIGH
+    // (Loops unchanged)
+    for (pos1 = 80; pos1 <= 90; pos1 += 1) {
+      myservo1.write(pos1);
+      delay(10);
+    }
+    delay(3000);
+
+    for (pos2 = 80; pos2 >= 35; pos2 -= 1) {
+      myservo2.write(pos2);
+      delay(15);
+    }
+    delay(3000);
+
+    for (pos3 = 80; pos3 >= 5; pos3 -= 1) {
+      myservo3.write(pos3);
+      delay(15);
+    }
+    delay(3000);
+
+    for (pos2 = 35; pos2 <= 80; pos2 += 1) {
+      myservo2.write(pos2);
+      delay(15);
+    }
+    delay(3000);
+
+    for (pos1 = 90; pos1 <= 150; pos1 += 1) {
+      myservo1.write(pos1);
+      delay(10);
+    }
+    delay(3000);
+
+    for (pos2 = 80; pos2 >= 45; pos2 -= 1) {
+      myservo2.write(pos2);
+      delay(15);
+    }
+    delay(3000);
+
+    for (pos3 = 5; pos3 <= 80; pos3 += 1) {
+      myservo3.write(pos3);
+      delay(15);
+    }
+    delay(3000);
+
+    for (pos2 = 45; pos2 <= 80; pos2 += 1) {
+      myservo2.write(pos2);
+      delay(15);
+    }
+    delay(3000);
+
+    for (pos1 = 150; pos1 >= 80; pos1 -= 1) {
+      myservo1.write(pos1);
+      delay(10);
+    }
+    delay(3000);
+
+    delay(10000);
+  } else if (sensorBState == LOW && sensorAState == HIGH) {
+    // Original code for Sensor B LOW and Sensor A HIGH
+    // (Loops unchanged)
+    for (pos1 = 80; pos1 >= 55; pos1 -= 1) {
+      myservo1.write(pos1);
+      delay(10);
+    }
+    delay(3000);
+
+    for (pos2 = 80; pos2 >= 35; pos2 -= 1) {
+      myservo2.write(pos2);
+      delay(15);
+    }
+    delay(3000);
+
+    for (pos3 = 80; pos3 >= 5; pos3 -= 1) {
+      myservo3.write(pos3);
+      delay(15);
+    }
+    delay(3000);
+
+    for (pos2 = 35; pos2 <= 80; pos2 += 1) {
+      myservo2.write(pos2);
+      delay(15);
+    }
+    delay(3000);
+
+    for (pos1 = 55; pos1 <= 150; pos1 += 1) {
+      myservo1.write(pos1);
+      delay(10);
+    }
+    delay(3000);
+
+    for (pos2 = 80; pos2 >= 45; pos2 -= 1) {
+      myservo2.write(pos2);
+      delay(15);
+    }
+    delay(3000);
+
+    for (pos3 = 5; pos3 <= 80; pos3 += 1) {
+      myservo3.write(pos3);
+      delay(15);
+    }
+    delay(3000);
+
+    for (pos2 = 45; pos2 <= 80; pos2 += 1) {
+      myservo2.write(pos2);
+      delay(15);
+    }
+    delay(3000);
+
+    for (pos1 = 150; pos1 >= 80; pos1 -= 1) {
+      myservo1.write(pos1);
+      delay(10);
+    }
+    delay(3000);
+
+    delay(10000);
+  } else if (sensorAState == LOW && sensorBState == LOW) {
+    // Original code for both sensors LOW
+    // (Loops unchanged)
+    for (pos1 = 80; pos1 <= 90; pos1 += 1) {
+      myservo1.write(pos1);
+      delay(15);
+    }
+    delay(3000);
+
+    for (pos2 = 80; pos2 >= 35; pos2 -= 1) {
+      myservo2.write(pos2);
+      delay(15);
+    }
+    delay(3000);
+
+    for (pos3 = 80; pos3 >= 5; pos3 -= 1) {
+      myservo3.write(pos3);
+      delay(15);
+    }
+    delay(3000);
+
+    for (pos2 = 35; pos2 <= 80; pos2 += 1) {
+      myservo2.write(pos2);
+      delay(15);
+    }
+    delay(3000);
+
+    for (pos1 = 90; pos1 <= 150; pos1 += 1) {
+      myservo1.write(pos1);
+      delay(15);
+    }
+    delay(3000);
+
+    for (pos2 = 80; pos2 >= 45; pos2 -= 1) {
+      myservo2.write(pos2);
+      delay(15);
+    }
+    delay(3000);
+
+    for (pos3 = 5; pos3 <= 80; pos3 += 1) {
+      myservo3.write(pos3);
+      delay(15);
+    }
+    delay(3000);
+
+    for (pos2 = 45; pos2 <= 80; pos2 += 1) {
+      myservo2.write(pos2);
+      delay(15);
+    }
+    delay(3000);
+
+    for (pos1 = 150; pos1 >= 80; pos1 -= 1) {
+      myservo1.write(pos1);
+      delay(15);
+    }
+    delay(3000);
+
+    for (pos1 = 80; pos1 >= 55; pos1 -= 1) {
+      myservo1.write(pos1);
+      delay(15);
+    }
+    delay(3000);
+
+    delay(10000);
+  } else if (sensorAState == HIGH && sensorBState == HIGH) {
+    // Add your desired actions for both sensors HIGH here
+    // Action for both sensors HIGH (do nothing, keep original positions)
+    myservo1.write(pos1);
+    myservo2.write(pos2);
+    myservo3.write(pos3);
+    // No action currently defined
+  }
+}
